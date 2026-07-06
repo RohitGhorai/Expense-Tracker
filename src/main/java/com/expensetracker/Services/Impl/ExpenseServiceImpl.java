@@ -79,7 +79,7 @@ public class ExpenseServiceImpl implements ExpenseService {
                     @CacheEvict(value = "budgets", key = "'allBudgets'")
             }
     )
-    public Expense updateExpenseById(Map<String, Object> updates, int userId, int budgetId, int expId) { // Only we can update expense amount and description
+    public Expense updateExpenseById(Map<String, Object> updates, int userId, int budgetId, int expId) {
         if (updates == null) throw new ApiException("NO_CONTENT", HttpStatus.NO_CONTENT);
         Expense oldExpense = getExpenseById(expId);
         Budget budget = budgetRepo.findById(budgetId).orElseThrow(() -> new ResourceNotFoundException("Budget", "Id", budgetId));
