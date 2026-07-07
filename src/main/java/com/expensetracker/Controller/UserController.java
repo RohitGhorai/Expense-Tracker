@@ -36,9 +36,9 @@ public class UserController {
         User updateUser = userService.updateUserById(user, userId);
         return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }
-    @PatchMapping
-    public ResponseEntity<User> updateUserRole(@PathVariable int id, @RequestParam String role) {
-        User updatedUser = userService.updateUserRole(id, role);
+    @PatchMapping("/users/{userId}")
+    public ResponseEntity<User> updateUserRole(@PathVariable int userId, @RequestParam String role) {
+        User updatedUser = userService.updateUserRole(userId, role);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
     @DeleteMapping("/{userId}")

@@ -42,6 +42,7 @@ public class SecurityConfig {
                                 "/budgets/{budgetId}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PATCH,
                                 "/users").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/users/{userId}").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(customAuthenticationEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
